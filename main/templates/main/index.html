@@ -1,0 +1,44 @@
+{% extends 'layout/basic.html' %}
+
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container-fluid mb-2 border-bottom">
+    <div class="row">
+        <div class="col">&nbsp;</div>
+        <form class="col-dm-auto form-inline pb-3">
+            {% bootstrap_form form show_label=False %}
+            <br>
+            {% bootstrap_button content="Поиск" button_type='submit' %}
+        </form>
+    </div>
+</div>
+<div class="container-fluid">
+<h2 class="display-5 fw-bold text-center">Все объявления</h2>
+{% if ads %}
+<ul class="list-unstyled">
+    {% for ad in ads %}
+    <li class="media my-5 p-3 border">
+        {% url 'main:detail' rubric_pk=ad.rubric.pk pk=ad.pk as url %}
+        <a href="{{ url }}{{ all }}">
+        {% if ad.image %}
+        <img class="mr-3" src="{% thumbnail ad.image 'default' %}">
+        {% else %}
+        <img class="mr-3" src="{% static 'main/empty.jpg' %}">
+        {% endif %}
+        </a>
+        <div class="media-body">
+            <h3><a href="{{ url }}{{ all }}">
+                {{ ad.title }}</a></h3>
+            <div {{ ad.content }}></div>
+            <p class="text-right font-weight-bold">{{ ad.price }} руб.</p>
+            <p class="text-right font-italic">{{ ad.created_at }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% bootstrap_pagination page url=keyword %}
+{% endif %}
+{% endblock %}

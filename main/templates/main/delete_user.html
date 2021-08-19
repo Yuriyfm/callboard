@@ -1,0 +1,14 @@
+{% extends 'layout/basic.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Удаление пользователя{% endblock %}
+
+{% block content %}
+<h2>Удаление пользователя {{ object.username }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button class="btn btn-primary mt-3" type="submit">Удалить</button>
+    </form>
+{% endblock %}
