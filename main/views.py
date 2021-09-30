@@ -14,7 +14,7 @@ from django.http import HttpResponse, Http404
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView, TemplateView, DeleteView
 
-from .models import AdvUser, SubRubric, Ad, Comment
+from .models import AdvUser, SubRubric, Ad, Comment, Rubric
 from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, AdForm, AIFormSet, UserCommentForm, \
     GuestCommentForm
 from .utilities import signer
@@ -100,6 +100,7 @@ def user_activate(request, sign):
 
 
 def other_page(request, page):
+    ''''''
     try:
         template = get_template('main/' + page + '.html')
     except TemplateDoesNotExist:

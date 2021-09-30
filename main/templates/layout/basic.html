@@ -1,4 +1,6 @@
 {% load static %}
+{% load thumbnail %}
+{% load bootstrap4 %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,16 +24,11 @@
 </head>
 
 <body>
-<header class="bg-dark text-white p-2" id="header">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="navbar-nav mr-auto">
+                <a class="nav-link px-4 text-info font-weight-bold text-start" href="{% url 'main:other' page='about'%}">О сайте</a>
                 <li><a href="{% url 'main:index' %}" class="nav-link px-4 text-info font-weight-bold text-start">Главная</a></li>
                 <a href="{% url 'main:profile_ad_add' %}" class="nav-link px-4 text-info font-weight-bold text-start">Добавить объявление</a>
             </ul>
@@ -49,9 +46,8 @@
                         <div class="dropdown-divider"></div>
                         <li><a href="{% url 'main:logout' %}" class="dropdown-item">Выйти</a></li>
                         <div class="dropdown-divider"></div>
-                        <li><a href="{% url 'main:profile_delete' %}" class="dropdown-item">Удалить</a></li>
+                        <li><a href="{% url 'main:profile_delete' %}" class="dropdown-item text-danger">Удалить профиль</a></li>
                     </ul>
-
                 </div>
                 <div class="text-end">
             {% else %}
@@ -60,19 +56,8 @@
             {% endif %}
             </div>
         </div>
-</header>
-
+</nav>
 <div class="flex-shrink-0 p-3 bg-dark" id="nav-sidebar">
-{#    {% for rubric in rubrics %}#}
-{#    {% ifchanged rubric.super_rubric.pk %}#}
-{#    <span class="nav-link root fs-3 text font-weight-bold">{{ rubric.super_rubric.name }}</span>#}
-{#    {% endifchanged %}#}
-{#    <a href="{% url 'main:by_rubric' pk=rubric.pk %}" class="nav link">#}
-{#    {{ rubric.name }}</a>#}
-{#    {% endfor %}#}
-{##}
-{#    <br>#}
-
     {% for rubric in rubrics %}
     <ul class="list-unstyled ps-0">
       {% ifchanged rubric.super_rubric.pk %}
@@ -96,58 +81,4 @@
 </div>
 </body>
 </html>
-{#    <ul class="list-unstyled ps-0">#}
-{#      <li class="mb-1">#}
-{#        <button class="btn btn-toggle text-white align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">#}
-{#          home#}
-{#        </button>#}
-{#        <div class="collapse show" id="home-collapse">#}
-{#          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">#}
-{#            <li><a href="#" class="text-white">Overview</a></li>#}
-{#            <li><a href="#" class="text-white">Updates</a></li>#}
-{#            <li><a href="#" class="text-white">Reports</a></li>#}
-{#          </ul>#}
-{#        </div>#}
-{#      </li>#}
-{#      <li class="mb-1">#}
-{#        <button class="btn btn-toggle text-white align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">#}
-{#          Dashboard#}
-{#        </button>#}
-{#        <div class="collapse" id="dashboard-collapse">#}
-{#          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">#}
-{#            <li><a href="#" class="text-white">Overview</a></li>#}
-{#            <li><a href="#" class="text-white">Weekly</a></li>#}
-{#            <li><a href="#" class="text-white">Monthly</a></li>#}
-{#            <li><a href="#" class="text-white">Annually</a></li>#}
-{#          </ul>#}
-{#        </div>#}
-{#      </li>#}
-{#      <li class="mb-1">#}
-{#        <button class="btn btn-toggle text-white align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">#}
-{#          Orders#}
-{#        </button>#}
-{#        <div class="collapse" id="orders-collapse">#}
-{#          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">#}
-{#            <li><a href="#" class="text-white">New</a></li>#}
-{#            <li><a href="#" class="text-white">Processed</a></li>#}
-{#            <li><a href="#" class="text-white">Shipped</a></li>#}
-{#            <li><a href="#" class="text-white">Returned</a></li>#}
-{#          </ul>#}
-{#        </div>#}
-{#      </li>#}
-{#      <li class="border-top my-3"></li>#}
-{#      <li class="mb-1">#}
-{#        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">#}
-{#          Account#}
-{#        </button>#}
-{#        <div class="collapse" id="account-collapse">#}
-{#          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">#}
-{#            <li><a href="#" class="link-dark rounded">New...</a></li>#}
-{#            <li><a href="#" class="link-dark rounded">Profile</a></li>#}
-{#            <li><a href="#" class="link-dark rounded">Settings</a></li>#}
-{#            <li><a href="#" class="link-dark rounded">Sign out</a></li>#}
-{#          </ul>#}
-{#        </div>#}
-{#      </li>#}
-{#    </ul>#}
 

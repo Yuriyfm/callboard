@@ -19,3 +19,10 @@ img.main-image {
 img.additional-image {
     width: 180px;
 }
+
+.input-group {
+    margin-left: 50px;
+}
+.input-group-btn {
+    margin-left: 10px;
+}

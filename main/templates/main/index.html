@@ -3,6 +3,17 @@
 {% load thumbnail %}
 {% load static %}
 {% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block search_form %}
+
+<div class="input-group">
+    {{ form|crispy }}
+    <span class="input-group-btn">
+    <button class="btn btn-primary ml-3" type="submit">Поиск</button>
+    </span>
+</div>
+{% endblock %}
 
 {% block content %}
 <div class="container-fluid mb-2 border-bottom">

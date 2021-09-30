@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'main',
     'crispy_forms',
     'easy_thumbnails',
+    'rest_framework',
     'django_cleanup.apps.CleanupConfig',
-    'captcha'
+    'captcha',
 ]
 
 MIDDLEWARE = [
